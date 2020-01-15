@@ -19,9 +19,10 @@ This is a lightweight, open-source, C# dungeon crawler game runing entirerely fr
 
 **Download game:** There are currently no downloads.
 
-**View source code:** Click [view on github](https://github.com/HugoCortell/HugoCortell.github.io) or here.
+**View source code:** Click [view on github](https://github.com/HugoCortell/HugoCortell.github.io/blob/master/game/game.cs) or here.
 
 **View modding guide:** Not until release 1.0
+
 
 
 ### Support & Contact
