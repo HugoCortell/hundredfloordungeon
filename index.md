@@ -14,14 +14,15 @@ This is a lightweight, open-source, C# dungeon crawler game runing entirerely fr
 - Easy to understand and to modify code
 ```
 
+
 ## Links
 
 **Download game:** There are currently no downloads.
 
-**Download source code:** Click [view on github](https://github.com/HugoCortell/HugoCortell.github.io) or here.
+**View source code:** Click [view on github](https://github.com/HugoCortell/HugoCortell.github.io) or here.
+
 **View modding guide:** Not until release 1.0
 
 
 ### Support & Contact
-
 If you wish to contact me for support or any other matter, mail me at [hugo@cortell.net](mailto:hugo@cortell.net)
