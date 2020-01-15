@@ -21,8 +21,7 @@ This is a lightweight, open-source, C# dungeon crawler game runing entirerely fr
 
 **View source code:** Click [view on github](https://github.com/HugoCortell/HugoCortell.github.io/blob/master/game/game.cs).
 
-**View modding guide:** Check out the [Modding 101 wiki page](https://github.com/HugoCortell/HugoCortell.github.io/wiki/Modding-101) for an easy-to-follow tutorial on how to mod the game.
-
+**View modding guide:** Check out the [Modding 101 wiki page](https://github.com/HugoCortell/HugoCortell.github.io/wiki/Modding-101) for an easy-to-follow tutorial.
 
 
 ### Support & Contact
