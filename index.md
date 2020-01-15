@@ -12,15 +12,11 @@ This is a lightweight, open-source, C# dungeon crawler game runing entirerely fr
 - Miniscule filesize
 - Easy to understand and to modify code
 ```
-**Bold** and _Italic_ and `Code` text
 
-### Downloads
+## Links
 
-There are currently no downloads.
-
-### Modding
-
-Modding guide coming in version 1.0...
+**Download game:** There are currently no downloads.
+`Modding guide:` no
 
 
 ### Support & Contact
