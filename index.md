@@ -25,4 +25,4 @@ This is a lightweight, open-source, C# dungeon crawler game runing entirerely fr
 
 
 ### Support & Contact
-If you wish to contact me for support or any other matter, mail me at [hugo@cortell.net](mailto:hugo@cortell.net)
+Contact details are currently not being provided.
