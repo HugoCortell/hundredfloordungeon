@@ -19,10 +19,10 @@ This is a lightweight, open-source, C# dungeon crawler game runing entirerely fr
 
 **Download game:** There are currently no downloads.
 
-**View source code:** Click [view on github](https://github.com/HugoCortell/HugoCortell.github.io/blob/master/game/game.cs).
+**View source code:** Click [view on github](https://github.com/HugoCortell/hundredfloordungeon/blob/master/game/game.cs).
 
-**View modding guide:** Check out the [Modding 101 wiki page](https://github.com/HugoCortell/HugoCortell.github.io/wiki/Modding-101) for an easy-to-follow tutorial.
+**View modding guide:** Check out the [Modding 101 wiki page](https://github.com/HugoCortell/hundredfloordungeon/wiki/Modding-101) for an easy-to-follow tutorial.
 
 
 ### Support & Contact
-Contact details are currently not being provided.
+[Click here](https://github.com/HugoCortell/hundredfloordungeon/issues) to submit an issue
