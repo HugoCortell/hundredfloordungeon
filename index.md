@@ -25,4 +25,4 @@ This is a lightweight, open-source, C# dungeon crawler game runing entirerely fr
 
 
 ### Support & Contact
-[Click here](https://github.com/HugoCortell/hundredfloordungeon/issues) to submit an issue
+[Click here](https://github.com/HugoCortell/hundredfloordungeon/issues) to submit an issue.
