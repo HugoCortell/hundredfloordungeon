@@ -28,8 +28,8 @@ public class Program
         string[] quick_class = { "Warrior", "Ranger", "Rouge", "Mage", "Samurai", "Blacksmith", "Guard", "Pirate", "Peasant", "Alchemist" };
         string[] classdesc = { "You clearly know your way around a sword.", "I wonder how many arrows that quiver of yours holds...", "You better not have stolen anything while we were speaking.", "Your magic tricks wont be of much use down there. I hope you know how to use a sword." };
         string[] weapon_list = { "Sword", "Bow", "Dagger", "Staff", "Katana", "Hammer", "Spear", "Cutlass", "Fists", "Broken Glass Bottle"};
-        // NOTE!!!!!!!!!!!!!!!!!!!! TODO: DAMAGE RANDOMIZATION FOR PLAYERS (Copy method used for enemies)
-        string[] damage_dat = { "15", "13", "7", "5", "20", "7", "17", "16", "1", "3"};
+        // lets see if the new combat sys works
+        string[] damage_dat = { "7", "15", "10", "13", "5", "8", "3", "7", "8", "27", "5", "7", "15", "17", "12", "16", "1", "3", "2", "5", "999" };
 
     label_main_menu: // Actual start of the menu
         menuinput = "";
@@ -136,13 +136,7 @@ public class Program
             }
 
             if (classnumint == 10)
-            { potionCount = potionCount + 6; }
-
-            else if (classnumint != 4 && classnumint != 10)
-            {
-                scrollCount--; // Fix for scroll count being 1 instead of zero
-                potionCount++; // I dont even know why I have to do this, for some reason it thinks its zero...
-            }
+            { potionCount = potionCount + 7; }
 
         dungeon(playername, playerclass, weapon_list, damage_dat, currentWeapon, weaponCount, scrollCount, potionCount);
     }
@@ -153,7 +147,6 @@ public class Program
         string inputString;
 
         int health = 100; // Theres no actual limit to health, this is intentional.
-        int damagedealt;
         string[] healthstr = { "3" };
         int deathint;
         string randeath;
@@ -171,13 +164,18 @@ public class Program
         string[] scroll_action_actionType = { "ray", "gas", "arrow", "ray", "godray", "electrical ark", "ray", "flash", "flash of darkness", "ray", "flash of light", "forcefield", "ray", "ray", "ray", "black hole" };
         string[] scroll_action_attack = { "shrouds", "zaps", "absorbs", "envelops", "hits", "pierces", "poisons", "decays", "attacks", "pushes back", "blows away", "slices", "cuts" };
 
-
+        // V2 combat system - Enemy variables
         int damCalCount = 0; // Gee can you guess why this is zero? I wonder!
-        string damagedealtstr;
         string enemy_damageMinS;
         string enemy_damageMaxS;
         int enemy_damageMin;
         int enemy_damageMax;
+
+        // Same but for the player
+        string player_damageMinS;
+        string player_damageMaxS;
+        int player_damageMin;
+        int player_damageMax;
 
         string frontEntity;
         frontEntity = "Visual Studio Crash Handler";
@@ -320,12 +318,24 @@ public class Program
             attackpatternint = rand.Next(attackPatternStr.Length);
             flavourtextattack = attackPatternStr[attackpatternint];
 
-            damagedealtstr = damage_dat[weaponCount];
-            Int32.TryParse(damagedealtstr, out damagedealt); // converts the string output into a int output for usage in calculations
+            // Indexes the weapon, then generates damage positioner
+            var indexedWeaponInt = Array.FindIndex(weapon_list, x => x == currentWeapon); // Finds string within an array, then assigns a generic value [C: BLUEPIXY]
+            indexedWeaponInt = indexedWeaponInt++; // Conversts value to custom numerical system
+            weaponCount = indexedWeaponInt * 2; // Transforms value to a weapon count value, for the damage system
+
+            // Checks damage dealt - Using the new V2 combat system
+            player_damageMinS = damage_dat[weaponCount];
+            Int32.TryParse(player_damageMinS, out player_damageMin);
+            weaponCount++; // Checks the next variable (the max damage, defined by the array)
+            player_damageMaxS = damage_dat[weaponCount];
+            Int32.TryParse(player_damageMaxS, out player_damageMax);
+            weaponCount--; // Resets array to previous position (Preventing an overflow)
+            player_damageMax++; // Fixes the array number (REMOVE IF THE ARRAY JUST MAGICALLY FIXES ITSELF)
+            int damagedealt = rand.Next(player_damageMin, player_damageMax); // Calculates [output] damage
 
             Console.Clear();
             Console.WriteLine("You " + flavourtextattack + " your " + currentWeapon + " at the " + frontEntity + "!");
-            Console.WriteLine("The " + frontEntity + " takes " + damagedealtstr + " damage!");
+            Console.WriteLine("The " + frontEntity + " takes " + damagedealt + " damage!");
             enemyHealth = enemyHealth - damagedealt;
             Console.WriteLine("");
             Console.WriteLine("Press [ENTER] to continue.");
@@ -336,7 +346,7 @@ public class Program
                 Console.WriteLine("The " + frontEntity + " has been slain!");
                 isEnemyPresent = false;
                 Console.WriteLine("");
-                Console.WriteLine("HERE GOES LOOT BULLSHIT");
+                Console.WriteLine("HERE GOES LOOT STUFF");
                 Console.WriteLine("SOMETHING SOMEGTHDGAGFS");
                 Console.WriteLine("");
                 Console.WriteLine("Press [ENTER] to continue.");
