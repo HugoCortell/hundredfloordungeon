@@ -17,7 +17,7 @@ This is a lightweight, open-source, C# dungeon crawler game runing entirerely fr
 
 ## Links
 
-**Download game:** There are currently no downloads.
+**Download game:** [Download](https://github.com/HugoCortell/hundredfloordungeon/raw/master/game.exe). WARNING: WIP VERSION!
 
 **View source code:** Click [view on github](https://github.com/HugoCortell/hundredfloordungeon/blob/master/game/game.cs).
 
