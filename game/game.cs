@@ -365,6 +365,13 @@ public class Program
                     else if (lootroll == 6 || lootroll == 7)
                     {
                         lootroll = rand.Next(weapon_list.Length);
+
+                        // Item blacklist, add [&&]'s to the while statement to blacklist specific weapons from the array
+                        while (lootroll == 8) // Remember to remove -1 from the value of the weapon, arrays start at zero!
+                        {
+                            lootroll = rand.Next(weapon_list.Length);
+                        }
+
                         lootdrops = weapon_list[lootroll];
 
                         loot_type = 3;
@@ -540,11 +547,46 @@ public class Program
             Console.WriteLine("Press [ENTER] to continue.");
             Console.ReadLine();
         }
+        if (inputString == "p" && currentWeapon != "Fists" || inputString == "pickup" && currentWeapon != "Fists") // Not as elegant as using an int, might be updated later 
+        {
+            label_pickup_action:
+            Console.Clear();
+            Console.WriteLine("Are you sure you wish to drop your " + currentWeapon + "?");
+            Console.WriteLine("");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Press [P]ickup to continue.");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Press [ENTER] to cancel.");
+            Console.ForegroundColor = ConsoleColor.White;
+            inputString = Console.ReadLine();
+            if (inputString == "p")
+            {
+                Console.WriteLine("");
+                Console.WriteLine("You throw away your weapon, you are now unnarmed.");
+                currentWeapon = weapon_list[8]; // Replaces current weapon with selected item
+                Console.WriteLine("");
+                Console.WriteLine("Press [ENTER] to continue.");
+                Console.ReadLine();
+                goto dungeon_start;
+            }
+            else if (inputString == "")
+            {
+                Console.WriteLine("");
+                Console.WriteLine("You are probably going to need your weapon anyways...");
+                Console.WriteLine("");
+                Console.WriteLine("Press [ENTER] to continue.");
+                Console.ReadLine();
+                goto dungeon_start;
+            }
+            goto label_pickup_action;
+        }
+        else if (inputString == "p" && currentWeapon == "Fists" || inputString == "pickup" && currentWeapon == "Fists")
+        {
+            Console.WriteLine("There is nothing you can pick up or drop here.");
+            Console.WriteLine("");
+            Console.WriteLine("Press [ENTER] to continue.");
+            Console.ReadLine();
+        }
         goto dungeon_start;
-    }
-
-    public void weaponPickup()
-    {
-
     }
 }
