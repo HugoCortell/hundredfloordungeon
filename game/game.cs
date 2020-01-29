@@ -28,7 +28,6 @@ public class Program
         string[] quick_class = { "Warrior", "Ranger", "Rouge", "Mage", "Samurai", "Blacksmith", "Guard", "Pirate", "Peasant", "Alchemist" };
         string[] classdesc = { "You clearly know your way around a sword.", "I wonder how many arrows that quiver of yours holds...", "You better not have stolen anything while we were speaking.", "Your magic tricks wont be of much use down there. I hope you know how to use a sword." };
         string[] weapon_list = { "Sword", "Bow", "Dagger", "Staff", "Katana", "Hammer", "Spear", "Cutlass", "Fists", "Broken Glass Bottle"};
-        // lets see if the new combat sys works
         string[] damage_dat = { "7", "15", "10", "13", "5", "8", "3", "7", "8", "27", "5", "7", "15", "17", "12", "16", "1", "3", "2", "5", "999" };
 
     label_main_menu: // Actual start of the menu
@@ -158,11 +157,15 @@ public class Program
 
         string[] scroll_boot_action = { "slowly take the scroll out of your backpack", "quickly take the scroll out of your backpack", "with musch haste take the scroll out of your backpack", "tightly grab your scroll", "get a scroll", "use a scroll", "take your scroll", "take the scroll out of your backpack without hasitation", "reach out to your pouch, taking a scroll from it", "tightly yet firmly grab your scroll", "take the scroll out of your backpack", "take the scroll out of your backpack in a panic" };
         string[] scroll_boot_time = { "quickly", "slowly", "rapidly", "very slowly" };
-        string[] scroll_boot_emission = { "vibrate", "emmit", "shine", "glow", "create", "radiate" };
+        string[] scroll_boot_emission = { "vibrate", "emit", "shine", "glow", "create", "radiate" };
         string[] scroll_general_colour = { "red", "green", "blue", "white", "black", "pink", "orange", "yellow", "purple", "dark" };
         string[] scroll_boot_feel = { "warm", "cold", "cilly", "menacing", "good", "evil", "malicious", "overpowering", "strong", "great", "wrong", "fantastic", "powerful", "active", "inactive", "aware", "lonley", "like paper, what did you expect", "magical", "plain", "special", "unequal", "equalizing", "anaholative", "godly", "heavenly", "destructive", "assertive", "powerless", "painful" };
         string[] scroll_action_actionType = { "ray", "gas", "arrow", "ray", "godray", "electrical ark", "ray", "flash", "flash of darkness", "ray", "flash of light", "forcefield", "ray", "ray", "ray", "black hole" };
         string[] scroll_action_attack = { "shrouds", "zaps", "absorbs", "envelops", "hits", "pierces", "poisons", "decays", "attacks", "pushes back", "blows away", "slices", "cuts" };
+
+        // Loot Generation
+        int loot_type = 0;
+        string lootdrops = "Visual Studio Error, the rarest of items!";
 
         // V2 combat system - Enemy variables
         int damCalCount = 0; // Gee can you guess why this is zero? I wonder!
@@ -197,10 +200,11 @@ public class Program
         dungeon_start:
 
         // Runtime Refresh Items
-        int escapeDamage = rand.Next(1, 25);
-        int ranheal = rand.Next(25, 50);
-        int scrolldmg = rand.Next(1, 450);
-        int lootroll = rand.Next(1, 7);
+        // [NOTE] Randoms never reach the max value, remember to always add one extra number!
+        int escapeDamage = rand.Next(1, 26);
+        int ranheal = rand.Next(25, 51);
+        int scrolldmg = rand.Next(1, 451);
+        int lootroll = rand.Next(1, 8);
 
         // PROPER START
         Console.Clear();
@@ -245,12 +249,12 @@ public class Program
             Console.WriteLine("");
             Console.WriteLine("[h]elp           - Displays this menu");
             Console.WriteLine("[a]ttack         - Attack the current enemy with your weapon");
-            Console.WriteLine("pickup       - Picks up weapon from the ground");
+            Console.WriteLine("[p]ickup         - Picks up items from the ground");
             Console.WriteLine("[s]croll         - Uses ancient scroll");
             Console.WriteLine("[+]heal          - Uses health potion");
             Console.WriteLine("[n]ext           - Enters the next floor");
             Console.WriteLine("");
-            Console.WriteLine("Press [ENTER] to continue.");
+            Console.WriteLine("Press [ENTER] to continue."); // add a random tip system?
             Console.ReadLine();
         }
         if (inputString == "n" && isEnemyPresent == false || inputString == "next" && isEnemyPresent == false)
@@ -346,10 +350,71 @@ public class Program
                 Console.WriteLine("The " + frontEntity + " has been slain!");
                 isEnemyPresent = false;
                 Console.WriteLine("");
-                Console.WriteLine("HERE GOES LOOT STUFF");
-                Console.WriteLine("SOMETHING SOMEGTHDGAGFS");
+                if (lootroll >= 3) // looting system
+                {
+                    if ( lootroll == 3 || lootroll == 4)
+                    {
+                        lootdrops = "healing potion";
+                        loot_type = 1;
+                    }
+                    else if (lootroll == 5)
+                    {
+                        lootdrops = "Magical Scroll";
+                        loot_type = 2;
+                    }
+                    else if (lootroll == 6 || lootroll == 7)
+                    {
+                        lootroll = rand.Next(weapon_list.Length);
+                        lootdrops = weapon_list[lootroll];
+
+                        loot_type = 3;
+                    }
+                    Console.WriteLine("On the floor lies a... " + lootdrops + ".");
+                }
+
+                else
+                { Console.WriteLine("Your foe had no loot for you to take."); }
                 Console.WriteLine("");
                 Console.WriteLine("Press [ENTER] to continue.");
+                inputString = Console.ReadLine();
+
+                if (inputString == "p" || inputString == "pickup")
+                {
+                    if (loot_type == 1)
+                    {
+
+                        potionCount++;
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("You picked the potion up.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Press [ENTER] to continue.");
+                    }
+
+                    else if (loot_type == 2)
+                    {
+                        scrollCount++;
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("You picked the scroll up.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("Press [ENTER] to continue.");
+                    }
+
+                    else if (loot_type == 3)
+                    {
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("You exchanged your " + currentWeapon + " for the " + lootdrops + " on the floor.");
+                        Console.ForegroundColor = ConsoleColor.White;
+
+                        weaponCount = lootroll; // Replaces the weapon in actuallity (the int that dictates damage)
+                        currentWeapon = weapon_list[weaponCount]; // Same but for the string
+
+
+                        Console.WriteLine("Press [ENTER] to continue.");
+                    }
+                }
                 goto label_combat_continue;
             }
 
@@ -364,6 +429,7 @@ public class Program
             enemy_damageMaxS = entity_damage[damCalCount];
             Int32.TryParse(enemy_damageMaxS, out enemy_damageMax);
             damCalCount--; // Resets array to previous position (Preventing an overflow)
+            enemy_damageMax++;
             int enemyDamageDealt = rand.Next(enemy_damageMin, enemy_damageMax); // Calculates damage
 
             Console.WriteLine("");
@@ -384,7 +450,7 @@ public class Program
             // Seriously, this got out of hand quick, im having too much fun.
             string scrollString1 = "take a scroll out";
             string scrollString2 = "slowly";
-            string scrollString3 = "emmit";
+            string scrollString3 = "emit";
             string scrollString4 = "magical";
             string scrollString5 = "otherworldly";
             string scrollString6 = "ray";
@@ -416,7 +482,7 @@ public class Program
             flavourtextattack = attackPatternStr[attackpatternint];
 
             Console.Clear();
-            Console.WriteLine("You " + scrollString1 + ", it " + scrollString2 + " starts to " + scrollString3 + " a " + scrollString4 + " lgiht... It feels " + scrollString5 + ".");
+            Console.WriteLine("You " + scrollString1 + ", it " + scrollString2 + " starts to " + scrollString3 + " a " + scrollString4 + " light... It feels " + scrollString5 + ".");
             Console.WriteLine("Suddenly, the scroll emits a " + scrollString4 + " " + scrollString6 + " which " + scrollString7 + " your opponent!");
             Console.WriteLine("Your attack has dealt " + scrolldmg + " damage!");
             enemyHealth = enemyHealth - scrolldmg;
@@ -445,6 +511,7 @@ public class Program
             enemy_damageMaxS = entity_damage[damCalCount];
             Int32.TryParse(enemy_damageMaxS, out enemy_damageMax);
             damCalCount--; // Resets array to previous position (Preventing an overflow)
+            enemy_damageMax++;
             int enemyDamageDealt = rand.Next(enemy_damageMin, enemy_damageMax); // Calculates damage
             enemyDamageDealt = enemyDamageDealt + escapeDamage * 2;
 
@@ -459,6 +526,7 @@ public class Program
             Console.WriteLine("");
             Console.WriteLine("Press [ENTER] to continue.");
             label_magical_combat_continue:
+            scrollCount--;
             Console.ReadLine();
         }
         else if (inputString == "s" && scrollCount == 0 && isEnemyPresent == true || inputString == "scroll" && scrollCount == 0 && isEnemyPresent == true)
