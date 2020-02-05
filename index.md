@@ -6,7 +6,7 @@ This is a lightweight, open-source, C# dungeon crawler game runing entirerely fr
 
 ## Features
 ```markdown
-- Randomized enemies, player starts and magic
+- Randomized enemies, player loot and magic
 - Fancy 3-colour text rendering
 - Over 100 variations of flavour text
 - Enageing repetitive gameplay
