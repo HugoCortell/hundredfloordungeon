@@ -27,8 +27,8 @@ public class Program
         string[] quick_names = { "Alex", "Alexander", "Frederik", "Alexandrov", "Thomas", "Randal", "Tom", "Freddy", "Noah", "Peter", "John", "Josh", "Jessie", "Frank", "Phil", "Hugo Cortell The Great", "Otto", "Zariel", "Ronald", "Gerald", "Daniel", "Dan", "Dorothy", "Ivan", "Jack", "Zorreh", "Timmy", "Torre", "Jose", "Juan", "Larry", "Poopy mcpooper", "Uto", "Lincon", "Tedward", "Ed", "Edd", "Eddy", "Ester" };
         string[] quick_class = { "Warrior", "Ranger", "Rouge", "Mage", "Samurai", "Blacksmith", "Guard", "Pirate", "Peasant", "Alchemist" };
         string[] classdesc = { "You clearly know your way around a sword.", "I wonder how many arrows that quiver of yours holds...", "You better not have stolen anything while we were speaking.", "Your magic tricks wont be of much use down there. I hope you know how to use a sword." };
-        string[] weapon_list = { "Sword", "Bow", "Dagger", "Staff", "Katana", "Hammer", "Spear", "Cutlass", "Fists", "Broken Glass Bottle"};
-        string[] damage_dat = { "7", "15", "10", "13", "5", "8", "3", "7", "8", "27", "5", "7", "15", "17", "12", "16", "1", "3", "2", "5", "999" };
+        string[] weapon_list = { "Sword", "Bow", "Dagger", "Staff", "Katana", "Hammer", "Spear", "Cutlass", "Fists", "Broken Glass Bottle", "Broadsword", "Shortsword", "Warhammer", "Club", "Polearm", "Morningstar", "Wip", "Halberd", "Axe", "Pickaxe", "Lance", "Bludgeon", "Mace", "Rapier", "Ulfberht", "Esoc", "Dao", "Falchion", "Liuyedao", "Backsword", "Woldo", "Tachi", "Claymore", "Pitchfork", "Harpoon"};
+        string[] damage_dat = { "7", "15", "10", "13", "5", "8", "3", "7", "8", "27", "5", "7", "15", "17", "12", "16", "1", "3", "2", "5", "9", "17", "5", "12", "10", "15", "5", "8", "7", "10", "7", "12", "2", "8", "10", "25", "7", "15", "4", "9", "12", "16", "7", "10", "8", "11", "1", "35", "7", "18", "5", "15", "7", "17", "5", "18", "8", "15", "9", "13", "11", "17", "12", "17", "11", "22", "5", "8", "7", "8", "999" };
 
     label_main_menu: // Actual start of the menu
         menuinput = "";
@@ -184,14 +184,13 @@ public class Program
         frontEntity = "Visual Studio Crash Handler";
         int entityCount = 0; // Set to zero so it may compile
         bool isEnemyPresent = false;
-        //bool newRoom = false; // NOTE: DISABLED FOR NOW JUST TO CLEAR THE CONSOLE ERROR
         int floor = 0;
         int enemyHealth = 0; // Set to zero so it may compile
         string enemyHealthStrg;
 
-        string[] entity_list = { "Goblin", "Group of Kobolts" };
-        string[] entity_health = { "12", "32" };
-        string[] entity_damage = { "3", "5", "1", "5", "999" }; // IGNORE THE LAST VALUE, Its made to keep an overflow at bay, because programing does not make sense
+        string[] entity_list = { "Goblin", "Group of Kobolts", "Troll", "Bandit", "Graverobber", "Zombie", "Ghoul", "Litch", "Deamon", "Rat", "Slime", "Skeleton", "Cultist", "Lizard Man", "Golem", "Elemental", "Orc", "Ogre", "Cyclops", "Gnome", "Guardian", "Harpy" };
+        string[] entity_health = { "12", "32", "150", "75", "50", "75", "50", "25", "95", "5", "75", "25", "10", "50", "225", "25", "50", "150", "25", "15", "75", "25" };
+        string[] entity_damage = { "3", "5", "1", "5", "10", "18", "5", "12", "1", "15", "5", "10", "7", "15", "10", "20", "11", "20", "1", "3", "1", "8", "7", "13", "5", "50", "8", "20", "5", "15", "15", "25", "10", "15", "7", "15", "5", "30", "1", "7", "5", "15", "7", "25", "999" }; // IGNORE THE LAST VALUE, Its made to keep an overflow at bay, because programing does not make sense
 
         // FIXES
         Random rand = new Random();
@@ -262,7 +261,258 @@ public class Program
             floor++;
             if (floor == 100)
             {
-                // Here goes the 100th floor
+                Console.Clear();
+                Console.WriteLine("You arrive at floor 100...");
+                Console.WriteLine("Before you stands a massive door.");
+                Console.WriteLine("");
+                Console.WriteLine("Press [ENTER] to continue.");
+                Console.ReadLine();
+                Console.WriteLine("");
+                Console.WriteLine("You open the door, leading down a long corridor,");
+                Console.WriteLine("Eventually, you make it to a large room, inside of that room there is nothing but a massive throne.");
+                Console.WriteLine("");
+                Console.WriteLine("On that throne sits a huge man, covered in steel plates and armour along every inch of his body,");
+                Console.WriteLine("You are unable to discern if the being inside of the armour is alive.");
+                Console.WriteLine("");
+                Console.WriteLine("Press [ENTER] to continue.");
+                Console.ReadLine();
+                Console.WriteLine("");
+                Console.WriteLine("As you step closer, the floor starts to tremble more and more violently...");
+                Console.WriteLine("Eventually you fall over from the tremors, as soon as you touch the ground, the earth stops moving.");
+                Console.WriteLine("");
+                Console.WriteLine("You look up, there before you is the man from the throne, standing, looking down on you.");
+                Console.WriteLine("");
+                Console.WriteLine("Press [ENTER] to continue.");
+                Console.ReadLine();
+                Console.WriteLine("");
+                Console.WriteLine("Before you can say a word or raise your " + currentWeapon + ", the man starts to speak...");
+                Console.WriteLine("");
+                Console.WriteLine("Press [ENTER] to continue.");
+                Console.ReadLine();
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("What is it you desire, brave adventurer?");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("The man takes his broadsword and impales it into the ground, using it as a pole to rest upon.");
+                Console.WriteLine("");
+                Console.WriteLine("Press [ENTER] to continue.");
+                Console.ReadLine();
+                Console.WriteLine("");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("I am the god of endings,");
+                Console.WriteLine("You have fought long and hard, I can grant you eternal peace, an ending to your story.");
+                Console.WriteLine("");
+                Console.WriteLine("So once more, brave adventurer...");
+                Console.WriteLine("What is it you most desire?");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("");
+                Console.WriteLine("Press [ENTER] to continue.");
+                Console.ReadLine();
+                    label_end_decision:
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("What is it you most desire?");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("[1] Gold         - Riches unlike no other");
+                Console.WriteLine("[2] Weapons      - The strongest weapon in the dungeon");
+                Console.WriteLine("[3] Power        - The secret of immortality");
+                Console.WriteLine("");
+                Console.WriteLine("[Insert your answer to continue...]");
+                inputString = Console.ReadLine();
+                if (inputString == "1")
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Gold?");
+                    Console.WriteLine("Why yes of course, the desire of all adventurers!");
+                    Console.WriteLine("");
+                    Console.WriteLine("I shall grant you your wish, piles upon piles of gold, mountains so large that you shault never see the end of them!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
+                    Console.WriteLine("Suddenly, you start hearing small metalic objects clash against the floor tiles,");
+                    Console.WriteLine("A golden coin hits you in the head, you look up and realize that it is raining pure gold!");
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    Console.WriteLine("The flood of gold does not stop, piles form everywhere as far as you can see...");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You start to slowly drown as the piles of gold engulf you...");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Your last breath is drawn in an attempt to not choke on the gold, it was a futile edevour.");
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    health = 0;
+                    goto dungeon_start;
+                }
+                else if (inputString == "2")
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("A mighty weapon?");
+                    Console.WriteLine("Well, it so happens I have it in my possesion!");
+                    Console.WriteLine("");
+                    Console.WriteLine("You may have it.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    Console.WriteLine("The man lets go of his massive broadsword, its shadow,");
+                    Console.WriteLine("Which is as massive as the tallest castles in the highlands, dawns upon you.");
+                    Console.WriteLine("The shadow rapidly starts to become smaller and smaller as it tips towards you.");
+                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("The massive broadsword falls atop you, crushing every bone in your body.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("You are now nothing but a puddle of blood covered in bone dust.");
+                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("It appears that you could not handle such a mighty weapon after all... Brave adventurer.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    health = 0;
+                    goto dungeon_start;
+                }
+                else if (inputString == "3")
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Power?");
+                    Console.WriteLine("So you wish to be unkilleable?");
+                    Console.WriteLine("");
+                    Console.WriteLine("I can do that.");
+                    Console.WriteLine("Drink this... Brave adventurer.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    Console.WriteLine("The man extends his hand out, giving you a strange potion unlike anything you have ever seen...");
+                    Console.WriteLine("You drink the gray potion with eagerness, seeking to amend your own mortality.");
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Your skin starts to slowly petrify, you scream in horror!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("You panic as every ounce of your being is petrified, slowly destroying nerves as it makes its way to your neck...");
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    Console.WriteLine("Nothing but a satue is left of you,");
+                    Console.WriteLine("Your memory forever lives on in the form of a statue amongst many in the halls of the dungeon.");
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    health = 0;
+                    goto dungeon_start;
+                }
+                else if (inputString == "a" || inputString == "attack")
+                {
+                    Console.Clear();
+                    Console.WriteLine("You see right through the intent of this false god and decide to strike.");
+                    Console.WriteLine("Aggressively, you begin to drink every potion in your possesion.");
+                    Console.WriteLine("");
+                    Console.WriteLine("The man notices your intent too, but continues to stand idle, amused by your courage.");
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    Console.WriteLine("Knowing that your weapon would be of no use, you toss it aside, much to the amusement of the man.");
+                    Console.WriteLine("");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Adventurer, do you intend to fight me with your bare fists?");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
+                    Console.WriteLine("You then take a torch out of your bag.");
+                    Console.WriteLine("The man stares, awaiting your next move...");
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You take the torch and burn your bag!");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    int bossDMGD = scrolldmg * scrollCount;
+
+                    Console.WriteLine("");
+                    Console.WriteLine("The man, shocked by your unexpected action, takes a defensive stance!");
+                    Console.WriteLine("");
+                    Console.WriteLine("Every spell within the bag burns, realeasing its powers all at once!");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Your " + scrollCount + " scrolls deal a combined damage of " + bossDMGD + "!");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("");
+                    Console.WriteLine("Press [ENTER] to continue.");
+                    Console.ReadLine();
+                    Console.Clear();
+                    if (bossDMGD >= 5000)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("The raw magical power bursts right through him, clearing a hole in the middle of his chest!");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("");
+                        Console.WriteLine("The man stumbles back, in disbelief.");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("You little, insignificant man, you beast, you MONSTER pretending to be a " + playerclass + "!");
+                        Console.WriteLine("Curse you! CURSE YOU!");
+                        Console.WriteLine("");
+                        Console.WriteLine("Press [ENTER] to continue.");
+                        Console.ReadLine();
+                        label_endlessmode_selection:
+                        Console.Clear();
+                        Console.WriteLine("The man falls over, the battle has been decided and you are its victor.");
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("You have defeated the lord of the dungeon,");
+                        Console.WriteLine("You may return to the surface and celebrate with the villagers or continue to the next floor...");
+                        Console.WriteLine("");
+                        Console.WriteLine("Press [ENTER] for credits.");
+                        Console.WriteLine("Press [N]ext to continue.");
+                        inputString = Console.ReadLine();
+                        if (inputString == "")
+                        {
+                            Console.Clear();
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("You exit the dungeon and the villagers greet you to celebrate!");
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("");
+                            Console.WriteLine("Hundred Floor Dungeon by Hugo Cortell");
+                            Console.WriteLine("VFS Student 2020");
+                            Console.WriteLine("");
+                            Console.WriteLine("Press [ENTER] to exit.");
+                            Console.ReadLine();
+                            Environment.Exit(0);
+                        }
+                        else if (inputString == "n" || inputString == "next")
+                        {
+                            scrollCount = 0;
+                            floor = 101;
+                            goto dungeon_start;
+                        }
+                        goto label_endlessmode_selection;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("You attempted to harm me, you failed.");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("");
+                        Console.WriteLine("Press [ENTER] to continue.");
+                        Console.ReadLine();
+                        Console.WriteLine("The man swings his massive broad sword, cutting you in half.");
+                        Console.WriteLine("");
+                        Console.WriteLine("Press [ENTER] to continue.");
+                        Console.ReadLine();
+                        health = 0;
+                        goto dungeon_start;
+                    }
+                }
+
+                goto label_end_decision;
             }
 
             // Selects the next enemy
@@ -422,6 +672,7 @@ public class Program
                         Console.WriteLine("Press [ENTER] to continue.");
                     }
                 }
+                inputString = "voidvalue"; // Da quickest of fixes
                 goto label_combat_continue;
             }
 
